@@ -1,7 +1,6 @@
 package com.example.tonto.drumpad24.sounds;
 
 import android.content.Context;
-import android.media.AudioManager;
 import android.media.SoundPool;
 
 import com.example.tonto.drumpad24.soundpack.PadInfo;
@@ -9,8 +8,6 @@ import com.example.tonto.drumpad24.soundpack.PadInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-
 import static android.media.AudioManager.STREAM_MUSIC;
 
 /**
@@ -67,6 +64,18 @@ public class SoundManager {
                     iteratorStreamIDs.remove();
                 }
 //                }
+            }
+        } else {
+            Iterator<PadInfo> iteratorPadInfo = playingPads.iterator();
+            Iterator<Integer> iteratorStreamIDs = streamIDs.iterator();
+            while (iteratorPadInfo.hasNext()) {
+                PadInfo pad = iteratorPadInfo.next();
+                Integer streamID = iteratorStreamIDs.next();
+                if (padInfo.equals(pad)) {
+                    soundPool.stop(streamID);
+                    iteratorPadInfo.remove();
+                    iteratorStreamIDs.remove();
+                }
             }
         }
         playingPads.add(padInfo);
