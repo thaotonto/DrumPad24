@@ -8,4 +8,5 @@ import java.util.ArrayList;
 
 public interface SoundPack {
     public ArrayList<PadInfo> getPadInfos();
+
 }

@@ -2,10 +2,15 @@ package com.example.tonto.drumpad24;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
+import com.example.tonto.drumpad24.soundpack.JiuJitsu;
 import com.example.tonto.drumpad24.soundpack.PadInfo;
 import com.example.tonto.drumpad24.soundpack.SoundPack;
 import com.example.tonto.drumpad24.soundpack.WatchYourStep;
@@ -17,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static android.app.PendingIntent.getActivity;
 import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
 import static android.view.MotionEvent.ACTION_POINTER_DOWN;
@@ -27,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private SoundPack soundPack;
     private List<PadInfo> padInfoList;
     private List<PressedKeyInfo> pressedKeyInfoList;
+    private Spinner spSpinner;
+    private String[] soundPackList = new String[]{
+            "Watch Your Step",
+            "JiuJitsu"
+    };
+    private String TAG = "MainActivity";
 
     class PressedKeyInfo {
         private ImageView ivKey;
@@ -53,11 +65,51 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         soundPack = new WatchYourStep(this);
+        SoundManager.soundPackName = soundPack.toString();
         padInfoList = soundPack.getPadInfos();
-
+        getReferences();
+        setupUI();
+        addListenner();
 
         pressedKeyInfoList = new ArrayList<>();
         SoundManager.loadSoundIntoList(this);
+    }
+
+    private void getReferences() {
+        spSpinner = (Spinner) findViewById(R.id.soundPackSpinner);
+    }
+
+    private void setupUI() {
+        ArrayAdapter<String> soundPackName = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, soundPackList);
+        spSpinner.setAdapter(soundPackName);
+    }
+
+    private void addListenner() {
+        spSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (soundPackList[position]) {
+                    case "Watch Your Step":
+                        soundPack = new WatchYourStep(MainActivity.this);
+                        SoundManager.soundPackName = soundPack.toString();
+                        break;
+                    case "JiuJitsu":
+                        soundPack = new JiuJitsu(MainActivity.this);
+                        SoundManager.soundPackName = soundPack.toString();
+                        break;
+                }
+                padInfoList = soundPack.getPadInfos();
+                pressedKeyInfoList = new ArrayList<>();
+                Log.d(TAG, String.format("OnItemSelected: %s", soundPack.toString()));
+                SoundManager.loadSoundIntoList(getApplicationContext());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override

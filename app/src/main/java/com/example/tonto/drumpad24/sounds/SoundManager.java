@@ -8,6 +8,7 @@ import com.example.tonto.drumpad24.soundpack.PadInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+
 import static android.media.AudioManager.STREAM_MUSIC;
 
 /**
@@ -16,6 +17,7 @@ import static android.media.AudioManager.STREAM_MUSIC;
 
 public class SoundManager {
     private static int NUMBER_OF_PADS = 12;
+    public static String soundPackName = "";
     public static SoundPool soundPool = new SoundPool(NUMBER_OF_PADS, STREAM_MUSIC, 0);
     public static ArrayList<Integer> soundIDList = new ArrayList<>();
     static HashMap<String, Integer> listSoundID = new HashMap<>();
@@ -40,8 +42,9 @@ public class SoundManager {
     }
 
     public static void loadSoundIntoList(Context context) {
+        soundIDList.clear();
         for (int i = 1; i <= NUMBER_OF_PADS; i++) {
-            int resIDSound = context.getResources().getIdentifier("sound_" + i, "raw", context.getPackageName());
+            int resIDSound = context.getResources().getIdentifier(soundPackName + "_" + i, "raw", context.getPackageName());
             int soundPoolID = soundPool.load(context, resIDSound, 1);
             soundIDList.add(soundPoolID);
         }
