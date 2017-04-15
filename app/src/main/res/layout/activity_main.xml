@@ -18,25 +18,28 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/butt1_1"
+                android:id="@+id/pad1_1"
+                android:tag="PAD01"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
 
             <ImageView
-                android:id="@+id/butt1_2"
+                android:id="@+id/pad1_2"
+                android:tag="PAD02"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
 
             <ImageView
-                android:id="@+id/butt1_3"
+                android:id="@+id/pad1_3"
+                android:tag="PAD03"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
         </LinearLayout>
 
         <LinearLayout
@@ -46,25 +49,28 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/butt2_1"
+                android:id="@+id/pad2_1"
+                android:tag="PAD04"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
 
             <ImageView
-                android:id="@+id/butt2_2"
+                android:id="@+id/pad2_2"
+                android:tag="PAD05"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
 
             <ImageView
-                android:id="@+id/butt2_3"
+                android:id="@+id/pad2_3"
+                android:tag="PAD06"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,25 +80,28 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/butt3_1"
+                android:id="@+id/pad3_1"
+                android:tag="PAD07"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
 
             <ImageView
-                android:id="@+id/butt3_2"
+                android:id="@+id/pad3_2"
+                android:tag="PAD08"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
 
             <ImageView
-                android:id="@+id/butt3_3"
+                android:id="@+id/pad3_3"
+                android:tag="PAD09"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
         </LinearLayout>
 
         <LinearLayout
@@ -102,25 +111,28 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/butt4_1"
+                android:id="@+id/pad4_1"
+                android:tag="PAD10"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
 
             <ImageView
-                android:id="@+id/butt4_2"
+                android:id="@+id/pad4_2"
+                android:tag="PAD11"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
 
             <ImageView
-                android:id="@+id/butt4_3"
+                android:id="@+id/pad4_3"
+                android:tag="PAD12"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/button" />
+                app:srcCompat="@drawable/pad_green" />
         </LinearLayout>
     </LinearLayout>
 
