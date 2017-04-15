@@ -56,34 +56,21 @@ public class SoundManager {
             while (iteratorPadInfo.hasNext()) {
                 PadInfo pad = iteratorPadInfo.next();
                 Integer streamID = iteratorStreamIDs.next();
-//                if (!padInfo.equals(pad)) {
                 if (pad.isGroup()) {
-//                        if (!pad.isPlayFully())
-                    soundPool.stop(streamID);
-                    iteratorPadInfo.remove();
-                    iteratorStreamIDs.remove();
-                }
-//                }
-            }
-        } else {
-            Iterator<PadInfo> iteratorPadInfo = playingPads.iterator();
-            Iterator<Integer> iteratorStreamIDs = streamIDs.iterator();
-            while (iteratorPadInfo.hasNext()) {
-                PadInfo pad = iteratorPadInfo.next();
-                Integer streamID = iteratorStreamIDs.next();
-                if (padInfo.equals(pad)) {
                     soundPool.stop(streamID);
                     iteratorPadInfo.remove();
                     iteratorStreamIDs.remove();
                 }
             }
         }
-        playingPads.add(padInfo);
         if (padInfo.isLoop()) {
             loop = -1;
         }
         streamId = soundPool.play(soundIDList.get(listSoundID.get(string)), 1.f, 1.f, 1, loop, 1.0f);
-        streamIDs.add(streamId);
+        if (padInfo.isGroup()) {
+            streamIDs.add(streamId);
+            playingPads.add(padInfo);
+        }
     }
 
 
@@ -103,15 +90,4 @@ public class SoundManager {
         }
     }
 
-    public static void loop(PadInfo padInfo) {
-        Iterator<PadInfo> iteratorPadInfo = playingPads.iterator();
-        Iterator<Integer> iteratorStreamIDs = streamIDs.iterator();
-        while (iteratorPadInfo.hasNext()) {
-            PadInfo pad = iteratorPadInfo.next();
-            Integer streamID = iteratorStreamIDs.next();
-            if (padInfo.equals(pad)) {
-
-            }
-        }
-    }
 }
